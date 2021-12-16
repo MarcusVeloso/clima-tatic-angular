@@ -4,17 +4,17 @@ import { VisualCrossingWeatherService } from 'src/app/services/visual-crossing-w
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.css']
+  styleUrls: ['./weather.component.css'],
 })
 export class WeatherComponent implements OnInit {
+  weatherList: any = [];
 
-  constructor(private weather: VisualCrossingWeatherService) { }
+  constructor(private weather: VisualCrossingWeatherService) {}
 
   ngOnInit(): void {
-    this.weather.getWeatherForecastData()
-      .subscribe((weather) => {
-        console.log(weather);
-      });
+    this.weather.getWeatherForecastData().subscribe((weather) => {
+      console.log(weather);
+      this.weatherList = weather;
+    });
   }
-
 }
